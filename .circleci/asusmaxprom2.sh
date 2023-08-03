@@ -157,7 +157,7 @@ function exports() {
                        
         elif [ -d ${KERNEL_DIR}/cosmic-clang ];
            then
-               export KBUILD_COMPILER_STRING=$(${KERNEL_DIR}/cosmic-clang/bin/clang --version | head -n 1 | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')
+               export KBUILD_COMPILER_STRING=$(${KERNEL_DIR}/cosmic-clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
                export LD_LIBRARY_PATH="${KERNEL_DIR}/cosmic-clang/lib:$LD_LIBRARY_PATH"
          
          elif [ -d ${KERNEL_DIR}/neutron ];
@@ -267,7 +267,7 @@ START=$(date +"%s")
 	       
 	elif [ -d ${KERNEL_DIR}/cosmic-clang ];
 	   then
-	       make -kj$(nproc --all) O=out \
+	       make -j$(nproc --all) O=out \
 	       ARCH=arm64 \
 	       CC=clang \
 	       CROSS_COMPILE=aarch64-linux-gnu- \
@@ -277,8 +277,8 @@ START=$(date +"%s")
 	       #LLVM_IAS=1 \
 	       AR=llvm-ar \
 	       NM=llvm-nm \
-	       OBJCOPY=llvm-objcopy \
-	       #OBJDUMP=llvm-objdump \
+	       #OBJCOPY=llvm-objcopy \
+	       OBJDUMP=llvm-objdump \
 	       STRIP=llvm-strip \
 	       V=$VERBOSE 2>&1 | tee error.log
 	       
