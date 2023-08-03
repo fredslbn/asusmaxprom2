@@ -4,8 +4,8 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=Etherious Kernel by SonalSingh18
-do.devicecheck=1
+kernel.string=SUPER.KERNEL X01BD (ASUS MAXPRO M2)
+do.devicecheck=0
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
