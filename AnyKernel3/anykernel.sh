@@ -4,7 +4,7 @@
 ## AnyKernel setup
 # begin properties
 properties() { '
-kernel.string=SUPER.KERNEL X01BD (ASUS MAXPRO M2)
+kernel.string=SUPER.KERNEL X01BD | X00TD
 do.devicecheck=0
 do.modules=0
 do.cleanup=1

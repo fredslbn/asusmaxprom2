@@ -11,7 +11,7 @@ KERNEL_DIR="$(pwd)"
 ##----------------------------------------------------------##
 # Device Name and Model
 MODEL=Asus
-DEVICE=X01BD
+DEVICE=X00TD
 
 # Kernel Version Code
 #VERSION=
@@ -20,7 +20,7 @@ DEVICE=X01BD
 DEFCONFIG=${DEVICE}_defconfig
 
 # Select LTO variant ( Full LTO by default )
-DISABLE_LTO=0
+DISABLE_LTO=1
 THIN_LTO=0
 
 # Files
@@ -272,7 +272,7 @@ START=$(date +"%s")
 	       CC=clang \
 	       CROSS_COMPILE=aarch64-linux-gnu- \
 	       CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-	       LD=${LINKER} \
+	       #LD=${LINKER} \
 	       #LLVM=1 \
 	       #LLVM_IAS=1 \
 	       AR=llvm-ar \
