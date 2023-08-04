@@ -48,11 +48,11 @@ FINAL_ZIP_ALIAS=Karenultulip-${DATE}.zip
 ##----------------------------------------------------------##
 # Specify compiler.
 
-COMPILER=azure
+COMPILER=cosmic-clang
 
 ##----------------------------------------------------------##
 # Specify Linker
-LINKER=ld
+LINKER=ld.lld
 
 ##----------------------------------------------------------##
 
@@ -89,7 +89,7 @@ function cloneTC() {
     elif [ $COMPILER = "cosmic-clang" ];
     then
     git clone --depth=1 https://gitlab.com/GhostMaster69-dev/cosmic-clang.git -b master cosmic-clang
-    PATH="${KERNEL_DIR}/cosmic-clang/bin:$PATH"
+    PATH="${KERNEL_DIR}/cosmic-clang/bin:${PATH}"
     
 	elif [ $COMPILER = "azure" ];
 	then
@@ -158,7 +158,7 @@ function exports() {
         elif [ -d ${KERNEL_DIR}/cosmic-clang ];
            then
                export KBUILD_COMPILER_STRING=$(${KERNEL_DIR}/cosmic-clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
-               #export LD_LIBRARY_PATH="${KERNEL_DIR}/cosmic-clang/lib:$LD_LIBRARY_PATH"
+               export LD_LIBRARY_PATH="${KERNEL_DIR}/cosmic-clang/lib:${LD_LIBRARY_PATH}"
          
          elif [ -d ${KERNEL_DIR}/neutron ];
            then
