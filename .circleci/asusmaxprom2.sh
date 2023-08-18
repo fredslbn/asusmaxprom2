@@ -11,7 +11,7 @@ KERNEL_DIR="$(pwd)"
 ##----------------------------------------------------------##
 # Device Name and Model
 MODEL=Asus
-DEVICE=X00TD
+DEVICE=X01BD
 
 # Kernel Version Code
 #VERSION=
@@ -41,7 +41,7 @@ DATE=$(TZ=Asia/Jakarta date +"%Y%m%d-%T")
 TANGGAL=$(date +"%F%S")
 
 # Specify Final Zip Name
-ZIPNAME="SUPER.KERNEL-X01BD-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
+ZIPNAME="SUPER.KERNEL-${MODEL}-${DEVICE}-$(TZ=Asia/Jakarta date +"%Y%m%d-%H%M").zip"
 FINAL_ZIP=${ZIPNAME}-${DEVICE}-${DATE}.zip
 FINAL_ZIP_ALIAS=Karenultulip-${DATE}.zip
 
@@ -52,7 +52,7 @@ COMPILER=cosmic-clang
 
 ##----------------------------------------------------------##
 # Specify Linker
-LINKER=ld
+LINKER=ld.lld
 
 ##----------------------------------------------------------##
 
@@ -272,7 +272,7 @@ START=$(date +"%s")
 	       CC=clang \
 	       CROSS_COMPILE=aarch64-linux-gnu- \
 	       CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
-	       #LD=${LINKER} \
+	       LD=${LINKER} \
 	       #LLVM=1 \
 	       #LLVM_IAS=1 \
 	       AR=llvm-ar \
@@ -354,7 +354,7 @@ START=$(date +"%s")
 	       
 	fi
 	
-	echo "**** Verify Image.gz-dtb & dtbo.img ****"
+	echo "**** Verify Image.gz-dtb ****"
     ls $(pwd)/out/arch/arm64/boot/Image.gz-dtb
     #ls $(pwd)/out/arch/arm64/boot/dtbo.img
     
